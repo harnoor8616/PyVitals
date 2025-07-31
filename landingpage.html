@@ -11,12 +11,12 @@
     <!-- Optional Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
 
+
     <title>PyVitals-Ai Powered Smart Medical Report Analyzer.</title>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary flex navbar bg-dark border-bottom border-body"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary flex navbar bg-dark border-bottom border-body stick"
         data-bs-theme="dark" id="home">
         <div class="container-fluid">
             <img class="round" src="Doctor_logo.png" alt="Logo" width="50" height="50"
@@ -54,7 +54,7 @@
                         <a class="nav-link" href="#testimonials">Testimonials</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " aria-disabled="true">Contact us</a>
+                        <a class="nav-link " aria-disabled="true" href="#contact">Contact us</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -193,6 +193,7 @@
             </div>
         </div>
     </div>
+
     <div class="testimonials" id="testimonials">
         <div class="background1">
             <div class="container ">
@@ -213,274 +214,350 @@
                         style="perspective: 1200px; perspective-origin: 50% 50%; width: 100vw; height: 100vh; position: relative; margin: 40px auto;">
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
+    <!-- <div class="contact" id="contact">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        <div class="left">
+                            <h4 class="roboto-condensed">Contact us</h4>
 
+                        </div>
+                    </div>
+                    <div class="col">
+                        2 of 2
+                    </div>
+                </div>
+            </div> -->
+    <div class="back">
+        <div class="container contact-section contact" id="contact">
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-lg-5 mb-4">
+                    <h6 class="text-uppercase text-primary fw-bold">Contact Us</h6>
+                    <h1 class="fw-bold">Get in touch<br>today</h1>
+                    <p class="text-muted">We love questions and feedback – and we’re always happy to help! Here are
+                        some
+                        ways to contact us.</p>
 
+                    <div class="info-box d-flex align-items-center">
+                        <i class="bi bi-envelope-fill info-icon"></i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:harnoorkaurdhiman@gmail.com">harnoorkaurdhiman@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="info-box d-flex align-items-center">
+                        <i class="bi bi-telephone-fill info-icon"></i>
+                        <div>
+                            <strong>Phone:</strong><br>
+                            (123) 123-3213-23
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <p>Reach out to us on:</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter-x"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <!-- Right Column -->
+                <div class="col-lg-6">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your email address">
+                        </div>
+                        <div class="mb-3">
+                            <label for="company" class="form-label">Company (optional)</label>
+                            <input type="text" class="form-control" id="company" placeholder="Company name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Leave us a message</label>
+                            <textarea class="form-control" id="message" rows="4"
+                                placeholder="Write your message here..."></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="robotCheck">
+                            <label class="form-check-label" for="robotCheck">I'm not a robot</label>
+                        </div>
+                        <button type="submit" class="btn btn-purple px-4">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <!-- Carousel Styles -->
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+    </div>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-            #carousel {
-                font-family: "Baloo 2", cursive;
-            }
+        #carousel {
+            font-family: "Baloo 2", cursive;
+        }
 
-            .card {
-                position: absolute;
-                width: 30vw;
-                height: 60vh;
-                border-radius: 1.5rem 1.5rem 3rem 3rem;
-                background: white;
-                box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
-                text-align: center;
-                padding: 5rem 2rem 2rem;
-                color: black;
-                user-select: none;
-                transform-style: preserve-3d;
-                transition: transform 1s ease, opacity 1s ease;
-            }
+        .card {
+            position: absolute;
+            width: 30vw;
+            height: 60vh;
+            border-radius: 1.5rem 1.5rem 3rem 3rem;
+            background: white;
+            box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
+            text-align: center;
+            padding: 5rem 2rem 2rem;
+            color: black;
+            user-select: none;
+            transform-style: preserve-3d;
+            transition: transform 1s ease, opacity 1s ease;
+        }
 
-            .card .top-band {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 6rem;
-                background-color: #0b4ea1;
-                border-radius: 1.5rem 1.5rem 0 0;
-                z-index: 1;
-            }
+        .card .top-band {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6rem;
+            background-color: #0b4ea1;
+            border-radius: 1.5rem 1.5rem 0 0;
+            z-index: 1;
+        }
 
-            .card img {
-                width: 96px;
-                height: 96px;
-                border-radius: 9999px;
-                border: 4px solid white;
-                object-fit: cover;
-                position: relative;
-                top: -48px;
-                z-index: 10;
-                background: white;
-                margin: 0 auto;
-                display: block;
-            }
+        .card img {
+            width: 96px;
+            height: 96px;
+            border-radius: 9999px;
+            border: 4px solid white;
+            object-fit: cover;
+            position: relative;
+            top: -48px;
+            z-index: 10;
+            background: white;
+            margin: 0 auto;
+            display: block;
+        }
 
-            .card h2 {
-                font-weight: 700;
-                font-size: 1.125rem;
-                margin-top: -32px;
-                margin-bottom: 1rem;
-                z-index: 10;
-                position: relative;
-            }
+        .card h2 {
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-top: -32px;
+            margin-bottom: 1rem;
+            z-index: 10;
+            position: relative;
+        }
 
-            .card p {
-                font-size: 1rem;
-                line-height: 1.5rem;
-                z-index: 10;
-                max-width: 280px;
-                margin: 0 auto;
-                position: relative;
-            }
+        .card p {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            z-index: 10;
+            max-width: 280px;
+            margin: 0 auto;
+            position: relative;
+        }
 
-            .card.behind {
-                background-color: rgba(11, 78, 161, 0.15);
-                color: rgba(0, 0, 0, 0.25);
-                backdrop-filter: blur(6px);
-                box-shadow: none;
-            }
+        .card.behind {
+            background-color: rgba(11, 78, 161, 0.15);
+            color: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(6px);
+            box-shadow: none;
+        }
 
-            .card.behind .top-band {
-                background-color: rgba(30, 78, 161, 0.3);
-                height: 4rem;
-                border-radius: 1.5rem 1.5rem 0 0;
-                position: relative;
-                top: 0;
-            }
+        .card.behind .top-band {
+            background-color: rgba(30, 78, 161, 0.3);
+            height: 4rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+            position: relative;
+            top: 0;
+        }
 
-            .card.behind img {
-                top: -32px;
-                width: 72px;
-                height: 72px;
-                border-width: 3px;
-            }
+        .card.behind img {
+            top: -32px;
+            width: 72px;
+            height: 72px;
+            border-width: 3px;
+        }
 
-            .card.behind h2 {
-                font-size: 1rem;
-                margin-top: -24px;
-                font-weight: 700;
-                color: rgba(0, 0, 0, 0.3);
-            }
+        .card.behind h2 {
+            font-size: 1rem;
+            margin-top: -24px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.3);
+        }
 
-            .card.behind p {
-                font-size: 0.875rem;
-                line-height: 1.25rem;
-                color: rgba(0, 0, 0, 0.539);
-                max-width: 50vh;
-            }
+        .card.behind p {
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            color: rgba(0, 0, 0, 0.539);
+            max-width: 50vh;
+        }
 
-            .card.behind {
-                background-color: rgba(255, 255, 255, 0.6);
-                /* Brighter base */
-                color: #333;
-                /* Darker text for contrast */
-                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-                transform: scale(0.85);
-                filter: brightness(0.9) contrast(1.1);
-                /* Slight depth illusion */
-                z-index: 1;
-                transition: all 0.5s ease-in-out;
-            }
+        .card.behind {
+            background-color: rgba(255, 255, 255, 0.6);
+            /* Brighter base */
+            color: #333;
+            /* Darker text for contrast */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transform: scale(0.85);
+            filter: brightness(0.9) contrast(1.1);
+            /* Slight depth illusion */
+            z-index: 1;
+            transition: all 0.5s ease-in-out;
+        }
 
-            .card.behind .top-band {
-                background-color: rgba(30, 78, 161, 0.4);
-                /* Stronger top band */
-                height: 5rem;
-            }
+        .card.behind .top-band {
+            background-color: rgba(30, 78, 161, 0.4);
+            /* Stronger top band */
+            height: 5rem;
+        }
 
-            .card.behind h2 {
-                font-size: 1rem;
-                color: #222;
-                /* Make name readable */
-            }
+        .card.behind h2 {
+            font-size: 1rem;
+            color: #222;
+            /* Make name readable */
+        }
 
-            .card.behind p {
-                font-size: 0.9rem;
-                color: #444;
-            }
-        </style>
+        .card.behind p {
+            font-size: 0.9rem;
+            color: #444;
+        }
+    </style>
 
-        <!-- Carousel Script -->
-        <script>
-            const people = [
-                {
-                    name: "— Dr. Riya Sharma, Intern at AIIMS Delhi",
-                    desc: "As a final-year MBBS student, PyVitals saved me hours of manual work. Its automatic report generation and vitals analysis made my internship documentation so easy. Highly recommend to all medical students!",
-                    img: "https://st2.depositphotos.com/1499355/12350/i/450/depositphotos_123508612-stock-photo-female-doctor-wearing-wearing-uniform.jpg",
-                    alt: "Profile image of Riya Sharma"
-                },
-                {
-                    name: "— Amit Sood, IT Professional, Chandigarh",
-                    desc: "I used PyVitals to track my father's BP and sugar levels at home. It’s super simple, and I can now show structured health reports to our family doctor without any confusion.",
-                    img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwZG9jdG9yfGVufDB8fDB8fHww",
-                    alt: "Profile image of Amit Sood"
-                },
-                {
-                    name: "— Dr. Manpreet Singh, Private Clinic, Amritsar",
-                    desc: "As a general physician, I needed a solution to manage patient data quickly. PyVitals' face recognition login and PDF generation tools make my clinic workflow smoother. Great work by the developers!",
-                    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67PX2nlSthweqmeu2Ri2W5akTfkaJXulG0A&s",
-                    alt: "Profile image of Dr. Manpreet"
-                },
-                {
-                    name: "— Neha Dabas, NGO Volunteer, Ludhiana",
-                    desc: "During our community health drive in rural Punjab, we used PyVitals on tablets. Data entry was smooth and multilingual support helped us bridge language barriers. Great initiative!",
-                    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0IQ2EsFlpXMmafBzkoiJXWJh5UBMaWkOfpA&s",
-                    alt: "Profile image placeholder for Neha"
-                },
-                {
-                    name: "— Arjun Prakash, Full Stack Developer, Bangalore",
-                    desc: "As a software developer myself, I can confidently say PyVitals is a well-thought-out and secure solution. Hats off to the team for such a made-in-India healthcare tool.",
-                    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMlAyPEx1lJSeNXqmTqu3cMvAF47LWKpqQfw&s",
-                    alt: "Profile image placeholder for Arjun"
-                },
-            ];
+    <script>
+        const people = [
+            {
+                name: "— Dr. Riya Sharma, Intern at AIIMS Delhi",
+                desc: "As a final-year MBBS student, PyVitals saved me hours of manual work. Its automatic report generation and vitals analysis made my internship documentation so easy. Highly recommend to all medical students!",
+                img: "https://st2.depositphotos.com/1499355/12350/i/450/depositphotos_123508612-stock-photo-female-doctor-wearing-wearing-uniform.jpg",
+                alt: "Profile image of Riya Sharma"
+            },
+            {
+                name: "— Amit Sood, IT Professional, Chandigarh",
+                desc: "I used PyVitals to track my father's BP and sugar levels at home. It’s super simple, and I can now show structured health reports to our family doctor without any confusion.",
+                img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aW5kaWFuJTIwZG9jdG9yfGVufDB8fDB8fHww",
+                alt: "Profile image of Amit Sood"
+            },
+            {
+                name: "— Dr. Manpreet Singh, Private Clinic, Amritsar",
+                desc: "As a general physician, I needed a solution to manage patient data quickly. PyVitals' face recognition login and PDF generation tools make my clinic workflow smoother. Great work by the developers!",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT67PX2nlSthweqmeu2Ri2W5akTfkaJXulG0A&s",
+                alt: "Profile image of Dr. Manpreet"
+            },
+            {
+                name: "— Neha Dabas, NGO Volunteer, Ludhiana",
+                desc: "During our community health drive in rural Punjab, we used PyVitals on tablets. Data entry was smooth and multilingual support helped us bridge language barriers. Great initiative!",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0IQ2EsFlpXMmafBzkoiJXWJh5UBMaWkOfpA&s",
+                alt: "Profile image placeholder for Neha"
+            },
+            {
+                name: "— Arjun Prakash, Full Stack Developer, Bangalore",
+                desc: "As a software developer myself, I can confidently say PyVitals is a well-thought-out and secure solution. Hats off to the team for such a made-in-India healthcare tool.",
+                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMlAyPEx1lJSeNXqmTqu3cMvAF47LWKpqQfw&s",
+                alt: "Profile image placeholder for Arjun"
+            },
+        ];
 
-            const carousel = document.getElementById("carousel");
+        const carousel = document.getElementById("carousel");
 
-            const positions = [
-                {
-                    transform: "translateX(-180px) translateZ(-120px) rotateY(30deg) scale(0.7)",
-                    opacity: 0.3,
-                    zIndex: 1,
-                    behind: true,
-                },
-                {
-                    transform: "translateX(-90px) translateZ(-60px) rotateY(15deg) scale(0.85)",
-                    opacity: 0.6,
-                    zIndex: 2,
-                    behind: true,
-                },
-                {
-                    transform: "translateX(0) translateZ(0) rotateY(0deg) scale(1)",
-                    opacity: 1,
-                    zIndex: 10,
-                    behind: false,
-                },
-                {
-                    transform: "translateX(90px) translateZ(-60px) rotateY(-15deg) scale(0.85)",
-                    opacity: 0.6,
-                    zIndex: 2,
-                    behind: true,
-                },
-                {
-                    transform: "translateX(180px) translateZ(-120px) rotateY(-30deg) scale(0.7)",
-                    opacity: 0.3,
-                    zIndex: 1,
-                    behind: true,
-                },
-            ];
+        const positions = [
+            {
+                transform: "translateX(-180px) translateZ(-120px) rotateY(30deg) scale(0.7)",
+                opacity: 0.3,
+                zIndex: 1,
+                behind: true,
+            },
+            {
+                transform: "translateX(-90px) translateZ(-60px) rotateY(15deg) scale(0.85)",
+                opacity: 0.6,
+                zIndex: 2,
+                behind: true,
+            },
+            {
+                transform: "translateX(0) translateZ(0) rotateY(0deg) scale(1)",
+                opacity: 1,
+                zIndex: 10,
+                behind: false,
+            },
+            {
+                transform: "translateX(90px) translateZ(-60px) rotateY(-15deg) scale(0.85)",
+                opacity: 0.6,
+                zIndex: 2,
+                behind: true,
+            },
+            {
+                transform: "translateX(180px) translateZ(-120px) rotateY(-30deg) scale(0.7)",
+                opacity: 0.3,
+                zIndex: 1,
+                behind: true,
+            },
+        ];
 
-            // Create and inject cards
-            people.forEach((person, i) => {
-                const card = document.createElement("div");
-                card.className = "card";
-                card.setAttribute("role", "listitem");
-                card.innerHTML = `
+        // Create and inject cards
+        people.forEach((person, i) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.setAttribute("role", "listitem");
+            card.innerHTML = `
                   <div class="top-band"></div>
                   <img src="${person.img}" alt="${person.alt}" />
                   <h2>${person.name}</h2>
                   <p>${person.desc}</p>
                 `;
-                carousel.appendChild(card);
+            carousel.appendChild(card);
+        });
+
+        const cards = Array.from(document.querySelectorAll(".card"));
+
+        function applyPositions() {
+            cards.forEach((card, i) => {
+                const pos = positions[i];
+                card.style.transform = pos.transform;
+                card.style.opacity = pos.opacity;
+                card.style.zIndex = pos.zIndex;
+                if (pos.behind) {
+                    card.classList.add("behind");
+                } else {
+                    card.classList.remove("behind");
+                }
+            });
+        }
+
+        applyPositions();
+
+        // Auto-rotate
+        setInterval(() => {
+            people.push(people.shift()); // rotate array
+            cards.forEach((card, i) => {
+                const person = people[i];
+                card.querySelector("img").src = person.img;
+                card.querySelector("img").alt = person.alt;
+                card.querySelector("h2").textContent = person.name;
+                card.querySelector("p").textContent = person.desc;
             });
 
-            const cards = Array.from(document.querySelectorAll(".card"));
-
-            function applyPositions() {
-                cards.forEach((card, i) => {
-                    const pos = positions[i];
-                    card.style.transform = pos.transform;
-                    card.style.opacity = pos.opacity;
-                    card.style.zIndex = pos.zIndex;
-                    if (pos.behind) {
-                        card.classList.add("behind");
-                    } else {
-                        card.classList.remove("behind");
-                    }
-                });
-            }
-
-            applyPositions();
-
-            // Auto-rotate
-            setInterval(() => {
-                people.push(people.shift()); // rotate array
-                cards.forEach((card, i) => {
-                    const person = people[i];
-                    card.querySelector("img").src = person.img;
-                    card.querySelector("img").alt = person.alt;
-                    card.querySelector("h2").textContent = person.name;
-                    card.querySelector("p").textContent = person.desc;
-                });
-
-                cards.forEach((card, i) => {
-                    const pos = positions[i];
-                    card.style.transition = "transform 1s ease, opacity 1s ease";
-                    card.style.transform = pos.transform;
-                    card.style.opacity = pos.opacity;
-                    card.style.zIndex = pos.zIndex;
-                    if (pos.behind) {
-                        card.classList.add("behind");
-                    } else {
-                        card.classList.remove("behind");
-                    }
-                });
-            }, 3000);
-        </script>
-
-
+            cards.forEach((card, i) => {
+                const pos = positions[i];
+                card.style.transition = "transform 1s ease, opacity 1s ease";
+                card.style.transform = pos.transform;
+                card.style.opacity = pos.opacity;
+                card.style.zIndex = pos.zIndex;
+                if (pos.behind) {
+                    card.classList.add("behind");
+                } else {
+                    card.classList.remove("behind");
+                }
+            });
+        }, 3000);
+    </script>
     </div>
 
 
