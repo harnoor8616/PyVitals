@@ -648,3 +648,81 @@ button {
 .colorblu {
     color: #0041a2;
 }
+
+.colorblu1 {
+    width: 100vw;
+    background-color: #0041a2;
+    height: 22vh;
+}
+
+.color {
+    color: whitesmoke;
+}
+
+.side {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    padding-top: 0.7rem !important;
+    padding-bottom: 0rem !important;
+}
+
+.list {
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    column-gap: 10px;
+    color: white;
+}
+
+
+
+.item:focus,
+.item:link,
+.item:visited,
+.item:hover,
+.item:active {
+    padding-top: 0px;
+    color: white;
+    text-decoration: none;
+    font-size: smaller;
+}
+
+.flex2 {
+    display: flex;
+    flex-direction: row;
+    column-gap: 100px;
+}
+
+.box1 {
+    height: 22vh;
+}
+
+.strt {
+    display: flex;
+}
+
+.size {
+    align-self: flex-start;
+    padding-top: 10px;
+    font-size: xx-small;
+}
+
+.size2 {
+    font-size: smaller;
+    color: whitesmoke;
+    text-align: start;
+}
+
+.footer_word {
+    font-size: x-small;
+    color: whitesmoke;
+    text-align: start;
+}
