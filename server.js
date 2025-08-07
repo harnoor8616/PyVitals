@@ -1,20 +1,25 @@
+// ✅ 1. Load env variables first
 require('dotenv').config();
+
+// ✅ 2. Now import packages
 const express = require('express');
 const bodyParser = require('body-parser');
-const twilio = require('twilio');
 const cors = require('cors');
+const twilio = require('twilio');
 
+// ✅ 3. Setup express after imports
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Twilio cregit add server.jsdentials
-const client = require("twilio")(
+// ✅ 4. Setup Twilio client after loading env
+const client = twilio(
     process.env.TWILIO_SID,
     process.env.TWILIO_AUTH_TOKEN
 );
+console.log("FULL ENV:", process.env);
+console.log("SID:", process.env.TWILIO_SID);
+console.log("TOKEN:", process.env.TWILIO_AUTH_TOKEN);
 
-
-// Numbers MUST be strings
 const YOUR_PHONE_NUMBER = '+917696784809';       // Your number to receive SMS
 const TWILIO_PHONE_NUMBER = '+18585670714';       // Twilio number assigned to you
 
@@ -41,7 +46,7 @@ Message: ${message}
 
         res.json({ success: true });
     } catch (err) {
-        console.error("Twilio Error:", err.message);
+        console.error(err.message);
         res.json({ success: false, error: err.message });
     }
 });

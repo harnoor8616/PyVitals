@@ -644,3 +644,7 @@ button {
     transform: scale(0.97);
     box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
 }
+
+.colorblu {
+    color: #0041a2;
+}
