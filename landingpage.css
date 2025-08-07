@@ -555,8 +555,8 @@ body {
 .contact-section {
     background-color: #f9f9f9;
     width: 100vw;
-    height: 90vh;
-    padding: 100px;
+    height: 100vh;
+    padding-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -598,4 +598,49 @@ textarea,
 button {
     all: unset;
     display: none;
+}
+
+.subtle-button1 {
+    align-self: flex-start !important;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0041a2;
+    background: linear-gradient(135deg, #e3ecfa, #f6f9ff);
+    border: 1px solid #c3d2ef;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.subtle-button1::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(173, 200, 255, 0.3);
+    transform: skewX(-45deg);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.subtle-button1:hover::before {
+    left: 100%;
+}
+
+.subtle-button1:hover {
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #dbe9ff, #eef4ff);
+    box-shadow: 0 0 10px 2px rgba(173, 200, 255, 0.4);
+}
+
+.subtle-button1:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
 }

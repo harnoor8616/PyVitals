@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Doctor_icon.ico" type="image/x-icon">
     <link rel="stylesheet" href="landingpage.css">
-    <!-- Include this in <head> -->
+
+    <head>
+
+        <!-- Include this in <head> -->
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <!-- Optional Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
 
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <!-- Optional Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
-
-
-    <title>PyVitals-Ai Powered Smart Medical Report Analyzer.</title>
-</head>
+        <title>PyVitals-Ai Powered Smart Medical Report Analyzer.</title>
+    </head>
 
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary flex navbar bg-dark border-bottom border-body stick"
@@ -257,7 +260,7 @@
                         <i class="bi bi-telephone-fill info-icon"></i>
                         <div>
                             <strong>Phone:</strong><br>
-                            (+91) 7696784809
+                            (+91) xxxxxx4809
                         </div>
                     </div>
 
@@ -274,7 +277,8 @@
                 <div class="col-lg-1"></div>
                 <!-- Right Column -->
                 <div class="col-lg-6">
-                    <form>
+                    <!-- <form action="?" method="POST"> -->
+                    <form id="contactForm">
                         <div class="mb-3">
                             <label for="Cname" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="Cname" placeholder="Your name">
@@ -292,13 +296,67 @@
                             <textarea class="form-control" id="message" rows="4"
                                 placeholder="Write your message here..."></textarea>
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="robotCheck">
-                            <label class="form-check-label" for="robotCheck">I'm not a robot</label>
-                        </div>
-                        <button type="submit" class="btn btn-purple px-4">Send Message</button>
+                        <!-- 6LfqM50rAAAAAD42VklUKrK77P_JARLyM8ryhsAu -->
+                        <div class="g-recaptcha" data-sitekey="6LfqM50rAAAAAD42VklUKrK77P_JARLyM8ryhsAu"></div>
+                        <button style="margin-top: 25px;" type="submit" value="Submit"
+                            class="btn py-3 subtle-button1">Send
+                            Message</button>
+                        <div id="statusMessage" class="mt-3 text-success fw-bold"></div>
+
+                        <script>
+
+                            document.getElementById("contactForm").addEventListener("submit", async function (e) {
+                                e.preventDefault();
+
+                                const statusDiv = document.getElementById("statusMessage");
+                                const nameInput = document.getElementById("Cname");
+                                const emailInput = document.getElementById("Cemail");
+                                const companyInput = document.getElementById("company");
+                                const messageInput = document.getElementById("message");
+
+                                const formData = {
+                                    name: nameInput.value,
+                                    email: emailInput.value,
+                                    company: companyInput.value,
+                                    message: messageInput.value
+                                };
+
+                                try {
+                                    const response = await fetch("http://localhost:3000/send-sms", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify(formData)
+                                    });
+
+                                    const result = await response.json();
+
+                                    if (result.success) {
+                                        statusDiv.textContent = "✅ Message sent via SMS!";
+                                        statusDiv.classList.remove("text-danger");
+                                        statusDiv.classList.add("text-success");
+
+                                        // Clear fields manually to ensure full reset
+                                        nameInput.value = '';
+                                        emailInput.value = '';
+                                        companyInput.value = '';
+                                        messageInput.value = '';
+
+                                        if (typeof grecaptcha !== "undefined") grecaptcha.reset();
+                                    } else {
+                                        throw new Error(result.error || "SMS failed");
+                                    }
+                                } catch (err) {
+                                    statusDiv.textContent = "❌ Error: " + err.message;
+                                    statusDiv.classList.remove("text-success");
+                                    statusDiv.classList.add("text-danger");
+                                }
+                            });
+                        </script>
+
                     </form>
                 </div>
+
+
             </div>
         </div>
 
@@ -510,10 +568,10 @@
             card.className = "card";
             card.setAttribute("role", "listitem");
             card.innerHTML = `
-                  <div class="top-band"></div>
-                  <img src="${person.img}" alt="${person.alt}" />
-                  <h2>${person.name}</h2>
-                  <p>${person.desc}</p>
+        <div class="top-band"></div>
+        <img src="${person.img}" alt="${person.alt}" />
+        <h2>${person.name}</h2>
+        <p>${person.desc}</p>
                 `;
             carousel.appendChild(card);
         });
