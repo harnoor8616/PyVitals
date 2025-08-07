@@ -387,13 +387,31 @@ body {
 }
 
 
-.flex1,
-#carousel {
+.flex1 {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+    width: 100vw;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 50vw;
-    height: 10vh;
+    font-family: "Baloo 2", cursive;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#carousel {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+    width: 100vw;
+    position: relative;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: "Baloo 2", cursive;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
@@ -405,7 +423,7 @@ body {
 .card {
     position: absolute;
     width: 30vw;
-    height: 60vh;
+    height: 40vh;
     border-radius: 1.5rem 1.5rem 3rem 3rem;
     background: white;
     box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
@@ -422,7 +440,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 6rem;
+    height: 1rem;
     background-color: #0b4ea1;
     border-radius: 1.5rem 1.5rem 0 0;
     z-index: 1;
@@ -569,7 +587,15 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(108, 99, 255, 0.25);
 }
 
-.btn-purple {
+.btn-purple,
+input {
     background-color: #6c63ff;
     color: white;
+}
+
+input,
+textarea,
+button {
+    all: unset;
+    display: none;
 }
