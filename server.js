@@ -1,17 +1,17 @@
-// ✅ 1. Load env variables first
+//  1. Load env variables first
 require('dotenv').config();
 
-// ✅ 2. Now import packages
+//  2. Now import packages
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const twilio = require('twilio');
 
-// ✅ 3. Setup express after imports
+//  3. Setup express after imports
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ✅ 4. Setup Twilio client after loading env
+// 4. Setup Twilio client after loading env
 const client = twilio(
     process.env.TWILIO_SID,
     process.env.TWILIO_AUTH_TOKEN
