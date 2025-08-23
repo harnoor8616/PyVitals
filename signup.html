@@ -14,15 +14,7 @@
         <div class="center">
             <h1 class="heading">Which best describes you?</h1>
             <div class="container text-center">
-                <!-- <div class="row self">
-                    <div class="col ">
-                        <a src="" height="200px" width="200px"><img class="button" src="doctor.png" alt=""
-                                height="200px" width="200px"></a>
-                    </div>
-                    <div class="col "></div>
-                    <div class="col "><a src="""><img class=" button" src="patient.png" alt="" height="200px"
-                            width="200px"></a></div>
-                </div> -->
+
                 <div class="row self">
                     <div class="col text-center">
                         <div class="option">
@@ -40,11 +32,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
     </div>
     <!-- Toast container -->
     <div id="toast" class="toast"></div>
@@ -66,58 +55,25 @@
         userBtn.addEventListener('click', () => {
             localStorage.setItem('userRole', 'user');
             showToast("✅ Role saved as Patient!", "#2575fc");
-            // redirect or continue signup flow here
+            setTimeout(() => {
+                window.location.href = "signupform.html";
+            }, 1000);
+
         });
 
         doctorBtn.addEventListener('click', () => {
             localStorage.setItem('userRole', 'doctor');
-            showToast("🩺 Role saved as Doctor!", "#6a11cb");
-            // redirect or continue signup flow here
+            showToast("🩺 Role saved as Doctor!", "#2575fc");
+            setTimeout(() => {
+                window.location.href = "signupform.html"; // replace with your signup page URL
+            }, 1000); // 1 second delay
         });
     </script>
 
-    <style>
-        .toast {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 16px 28px;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s, transform 0.5s;
-            z-index: 9999;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-10px);
-            pointer-events: auto;
-        }
-    </style>
 
 </body>
 
 
-<!-- <script>
-    const userBtn = document.getElementById('userBtn');
-    const doctorBtn = document.getElementById('doctorBtn');
 
-    userBtn.addEventListener('click', () => {
-        localStorage.setItem('userRole', 'user'); // save selection
-        alert('Role saved as User');
-        // redirect or continue signup flow
-    });
-
-    doctorBtn.addEventListener('click', () => {
-        localStorage.setItem('userRole', 'doctor');
-        alert('Role saved as Doctor');
-        // redirect or continue signup flow
-    });
-</script> -->
 
 </html>
