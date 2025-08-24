@@ -2,12 +2,11 @@ body {
     height: 100vh;
     margin: 0;
     /* pure blues/purples, no white */
-    background: linear-gradient(-45deg, #0d41e1, #5400ad, #2575fc, #6a11cb);
+    background: linear-gradient(-45deg, #0041a2, #5400ad, #063e9f, #6a11cb);
     background-size: 400% 400%;
     animation: gradientMagic 20s ease infinite;
 }
 
-/* Smooth gradient animation */
 @keyframes gradientMagic {
     0% {
         background-position: 0% 50%;
@@ -36,33 +35,285 @@ body {
     /* normal text */
 }
 
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-
 .center {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 90vh;
     width: 70vw;
-
     border-radius: 30px;
-    background: rgba(13, 65, 225, 0.85);
-    /* semi-transparent for depth */
+    background: #0041a2;
     backdrop-filter: blur(15px);
-    /* classy glassy effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(13, 65, 225, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px #0041a2;
+    transition: all 0.4s ease; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    /* instead of fixed height */
+    width: 70vw;
+    border-radius: 30px;
+    background: #0041a2;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px #0041a2;
     transition: all 0.4s ease;
 }
 
-/* Hover effect for subtle elegance */
 .center:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(13, 65, 225, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 30px #0041a2;
     transform: translateY(-5px);
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+}
+
+.video-box video {
+    border-radius: 20px;
+    flex: 1;
+    margin-left: 60px;
+}
+
+/* .info-box {
+    align-self: flex-start;
+    flex: 2;
+    
+padding: 40px;
+margin-right: 60px;
+border-radius: 20px;
+background: aliceblue;
+color: black;
+text-align: center;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+height: 100%;
+}
+
+*/
+.info-box {
+    flex: 2;
+    padding: 30px;
+    margin: 20px;
+    border-radius: 20px;
+    background: aliceblue;
+    color: black;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    height: auto;
+    /* 🔥 let content define height */
+    max-height: 80vh;
+    /* prevent it from taking too much space */
+    overflow-y: auto;
+    /* scroll if it gets too tall */
+}
+
+.paragraph {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.space {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .video-box video {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .info-box {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+.info-box {
+    flex: 2;
+    padding: 25px;
+    /* smaller padding */
+    margin: 20px;
+    border-radius: 20px;
+    background: aliceblue;
+    color: black;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    height: auto;
+    /* let content size naturally */
+    max-height: 90vh;
+    /* make sure it never overflows */
+    font-size: 0.95rem;
+    /* slightly smaller text */
+}
+
+.paragraph {
+    font-weight: 600;
+    font-size: 1.1rem;
+    /* shrink heading size */
+    margin-bottom: 1rem;
+}
+
+.form-control,
+.form-check-label,
+.btn {
+    font-size: 0.9rem;
+    /* shrink input/labels/buttons */
+    padding: 6px 10px;
+    /* reduce padding */
+}
+
+.form-control {
+    height: 30px;
+    /* smaller height */
+    font-size: 0.65rem;
+    /* smaller text */
+    padding: 2px 4px;
+    /* tighter padding */
+}
+
+.form-label {
+    font-size: 0.85rem;
+    /* shrink labels too */
+}
+
+.btn {
+    font-size: 0.9rem;
+    padding: 8px;
+    /* slimmer button */
+    height: 35px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    /* both columns equal height */
+    gap: 40px;
+    width: 100%;
+}
+
+/* Left side (logo/video) */
+.video-box {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.video-box video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* Right side (form) */
+.info-box {
+    flex: 1.2;
+    /* make form slightly bigger */
+    padding: 25px 30px;
+    border-radius: 20px;
+    background: #f8f9fa;
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* center the form vertically */
+}
+
+/* Make inputs smaller */
+.form-control {
+    height: 36px;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+}
+
+.btn {
+    font-size: 0.9rem;
+    height: 38px;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .info-box {
+        margin-top: 20px;
+    }
+}
+
+/* Reduce gap between label and input */
+.form-label {
+    margin-bottom: 2px !important;
+    /* default is ~.5rem */
+    font-size: 0.85rem;
+    /* slightly smaller text */
+}
+
+/* Reduce vertical spacing of form groups */
+.mb-3,
+.mb-4 {
+    margin-bottom: 10px !important;
+    /* default is ~1rem (16px) */
+}
+
+/* Compact inputs */
+.form-control {
+    height: 34px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
+}
+
+/* .eyesbutton,
+.eyesbutton:focus,
+.eyesbutton:clicked {
+    border: 1px solid black;
+    padding: 5px 5px;
+    width: 100px;
+    border-radius: 50px;
+} */
+.eyesbutton,
+.eyesbutton:focus {
+    border: none;
+    /* remove thick border */
+    background: transparent;
+    /* make background clean */
+    padding: 0 8px;
+    /* small horizontal padding */
+    width: auto;
+    /* no fixed width */
+    border-radius: 0;
+    /* remove pill shape */
+    outline: none;
+    /* no ugly outline */
+    box-shadow: none;
+    /* avoid Bootstrap shadows */
 }

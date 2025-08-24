@@ -2,7 +2,7 @@ body {
     height: 100vh;
     margin: 0;
     /* pure blues/purples, no white */
-    background: linear-gradient(-45deg, #0d41e1, #5400ad, #2575fc, #6a11cb);
+    background: linear-gradient(-45deg, #0041a2, #5400ad, #2575fc, #6a11cb);
     background-size: 400% 400%;
     animation: gradientMagic 20s ease infinite;
 }
@@ -43,27 +43,6 @@ body {
     align-items: center;
 }
 
-/* .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70vh;
-    width: 60vw;
-    border: 0px solid black;
-    border-radius: 30px;
-    background-color: hsla(225, 89%, 47%, 1);
-}
-
-.center:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(0, 212, 255, 0.5), 0 0 60px rgba(13, 65, 225, 0.4);
-    animation: glowPulse 2.5s ease-in-out infinite alternate;
-}
-
-.heading {
-    color: aliceblue;
-    align-self: flex-start;
-    padding-top: 80px;
-} */
 .center {
     display: flex;
     flex-direction: column;
@@ -72,17 +51,17 @@ body {
     height: 70vh;
     width: 60vw;
     border-radius: 30px;
-    background: rgba(13, 65, 225, 0.85);
+    background: #0041a2;
     /* semi-transparent for depth */
     backdrop-filter: blur(15px);
     /* classy glassy effect */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(13, 65, 225, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px #0041a2;
     transition: all 0.4s ease;
 }
 
 /* Hover effect for subtle elegance */
 .center:hover {
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(13, 65, 225, 0.6);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 30px #0041a2;
     transform: translateY(-5px);
 }
 
@@ -96,7 +75,7 @@ body {
     font-weight: 300;
     letter-spacing: 0.5px;
     text-shadow: 0 15px 40px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(13, 65, 225, 0.6);
+        0 0 30px #0041a2;
 }
 
 .self {
