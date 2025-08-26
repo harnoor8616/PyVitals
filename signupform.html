@@ -1,134 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyVitals Sign Up Page</title>
-    <link rel="stylesheet" href="signupform.css">
-    <link rel="icon" type="image/x-icon" href="Doctor_icon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-</head>
-
-<body>
-    <div class="center">
-        <div class="content">
-            <div class="video-box">
-                <video width="300" height="300" autoplay loop muted>
-                    <source src="PyVitals.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-
-            <div class="info-box">
-                <h5 class="paragraph">Tell us about yourself</h5>
-
-
-                <form class="needs-validation" novalidate>
-
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" id="firstName" class="form-control" placeholder="Enter first name"
-                                required>
-                            <div class="invalid-feedback">First name is required.</div>
-                        </div>
-                        <div class="col">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" id="lastName" class="form-control" placeholder="Enter last name"
-                                required>
-                            <div class="invalid-feedback">Last name is required.</div>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label space">Gender</label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male" required>
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
-                                required>
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>
-                        <div class="invalid-feedback ">Please select your gender.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email address</label>
-                        <input type="email" id="email" class="form-control" placeholder="Enter email" required>
-                        <div class="invalid-feedback ">Valid email is required.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <div class="input-group">
-                            <input type="password" id="password" class="form-control" placeholder="Enter password"
-                                required>
-                            <button class="btn  toggle-password" type="button" data-target="password">
-                                <i class="bi bi-eye eyesbutton"></i>
-                            </button>
-                        </div>
-                        <div class="invalid-feedback">Password is required.</div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <div class="input-group">
-                            <input type="password" id="confirmPassword" class="form-control"
-                                placeholder="Confirm password" required>
-                            <button class="btn toggle-password" type="button" data-target="confirmPassword">
-                                <i class="bi bi-eye eyesbutton"></i>
-                            </button>
-                        </div>
-                        <div class="invalid-feedback">Please confirm your password.</div>
-                        <script>
-                            document.querySelectorAll(".toggle-password").forEach(button => {
-                                button.addEventListener("click", function () {
-                                    const input = document.getElementById(this.getAttribute("data-target"));
-                                    const icon = this.querySelector("i");
-                                    if (input.type === "password") {
-                                        input.type = "text";
-                                        icon.classList.replace("bi-eye", "bi-eye-slash");
-                                    } else {
-                                        input.type = "password";
-                                        icon.classList.replace("bi-eye-slash", "bi-eye");
-                                    }
-                                });
-                            });
-                        </script>
-                        <div class="mb-4">
-                            <label for="dob" class="form-label">Date of Birth</label>
-                            <input type="date" id="dob" class="form-control" required>
-                            <div class="invalid-feedback">Date of birth is required.</div>
-                        </div>
-                        <input type="hidden" id="role" name="role">
-                        <script>
-                            // Get role from query string
-                            const params = new URLSearchParams(window.location.search);
-                            console.log(params)
-                            const role = params.get("role");
-                            if (role) {
-                                document.getElementById("role").value = role;
-                            }
-                        </script>
-
-                        <button type="submit" class="btn btn-primary w-100">Create Account</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    </div>
-
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
-
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,7 +31,7 @@
                             <label for="firstName" class="form-label">First Name</label>
                             <input type="text" id="firstName" class="form-control" placeholder="Enter first name"
                                 required>
-                            <div class="in+valid-feedback">First name is required.</div>
+                            <div class="invalid-feedback">First name is required.</div>
                         </div>
                         <div class="col">
                             <label for="lastName" class="form-label">Last Name</label>
@@ -350,6 +219,50 @@
             document.getElementById('loadingSpinner').style.display = 'none';
             document.getElementById('submitBtn').disabled = false;
         }
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Check if the form is valid
+            if (form.checkValidity() === false || passwordInput.value !== confirmPasswordInput.value) {
+                event.stopPropagation();
+                showAlert('Please fill out all required fields correctly.', 'danger');
+            } else {
+                showLoadingSpinner();
+
+                const userData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    gender: document.querySelector('input[name="gender"]:checked').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    dob: document.getElementById('dob').value,
+                };
+
+                try {
+                    const response = await fetch('http://localhost:5000/api/users/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),
+                    });
+
+                    const result = await response.json();
+                    if (response.ok) {
+                        showAlert(result.message, 'success');
+                        form.reset(); // Reset the form after successful submission
+                    } else {
+                        showAlert(result.error, 'danger');
+                    }
+                } catch (error) {
+                    showAlert('An error occurred. Please try again.', 'danger');
+                } finally {
+                    hideLoadingSpinner();
+                }
+            }
+            form.classList.add('was-validated');
+        });
+
     </script>
 </body>
 
