@@ -818,4 +818,50 @@ button {
     text-align: justify;
 }
 
-.social-icons1 {}
+/* Sleek secondary login button */
+.btn-login {
+    background: transparent;
+    color: #444;
+    border: 2px solid white;
+    /* matches your theme’s blue */
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover animation */
+.btn-login:hover {
+    color: #fff;
+    background: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* Ripple / glow effect */
+.btn-login::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0%;
+    height: 0%;
+    background: rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: 0;
+}
+
+.btn-login:hover::after {
+    width: 220%;
+    height: 220%;
+}
+
+/* Keep text above ripple */
+.btn-login span {
+    position: relative;
+    z-index: 1;
+}
