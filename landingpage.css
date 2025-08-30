@@ -600,50 +600,7 @@ button {
     display: none;
 }
 
-.subtle-button1 {
-    align-self: flex-start !important;
-    padding: 12px 28px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #0041a2;
-    background: linear-gradient(135deg, #e3ecfa, #f6f9ff);
-    border: 1px solid #c3d2ef;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: none;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
 
-.subtle-button1::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(173, 200, 255, 0.3);
-    transform: skewX(-45deg);
-    transition: all 0.4s ease;
-    z-index: -1;
-}
-
-.subtle-button1:hover::before {
-    left: 100%;
-}
-
-.subtle-button1:hover {
-    transform: scale(1.03);
-    background: linear-gradient(135deg, #dbe9ff, #eef4ff);
-    box-shadow: 0 0 10px 2px rgba(173, 200, 255, 0.4);
-}
-
-.subtle-button1:active {
-    transform: scale(0.97);
-    box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
-}
 
 .colorblu {
     color: #0041a2;
@@ -729,28 +686,6 @@ button {
     text-align: start;
 }
 
-/* 
-
-.iems {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin: o;
-    padding: 0;
-}
-
-.item1 {
-    align-self: flex-end;
-}
-
-.words,
-.footer_word {
-    margin: 0;
-    padding: 0;
-}
-    
-
-*/
 .item1 {
     display: flex;
     flex-direction: column;
@@ -818,50 +753,52 @@ button {
     text-align: justify;
 }
 
-/* Sleek secondary login button */
-.btn-login {
-    background: transparent;
-    color: #444;
-    border: 2px solid white;
-    /* matches your theme’s blue */
+
+.subtle-button1 {
+    align-self: flex-start !important;
+    padding: 12px 28px;
+    font-size: 16px;
     font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    border-radius: 30px;
-    transition: all 0.35s ease;
+    color: #000000 !important;
+    background: linear-gradient(135deg, #e3ecfa, #f6f9ff);
+    border: 1px solid #c3d2ef;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: none;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-}
-
-/* Hover animation */
-.btn-login:hover {
-    color: #fff;
-    background: #007bff;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
-}
-
-/* Ripple / glow effect */
-.btn-login::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0%;
-    height: 0%;
-    background: rgba(0, 123, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
-    z-index: 0;
-}
-
-.btn-login:hover::after {
-    width: 220%;
-    height: 220%;
-}
-
-/* Keep text above ripple */
-.btn-login span {
-    position: relative;
     z-index: 1;
+}
+
+.subtle-button1::before {
+    content: "";
+    color: #000000;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(173, 200, 255, 0.3);
+    transform: skewX(-45deg);
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.subtle-button1:hover::before {
+    left: 100%;
+    color: #000000;
+}
+
+.subtle-button1:hover {
+    color: #000000;
+    transform: scale(1.03);
+    background: linear-gradient(135deg, #dbe9ff, #eef4ff);
+    box-shadow: 0 0 10px 2px rgba(173, 200, 255, 0.4);
+}
+
+.subtle-button1:active {
+    color: #000000;
+    transform: scale(0.97);
+    box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
 }

@@ -1,43 +1,75 @@
-/* global use, db */
-// MongoDB Playground
-// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
-// Make sure you are connected to enable completions and to be able to run a playground.
-// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
-// The result of the last command run in a playground is shown on the results panel.
-// By default the first 20 documents will be returned with a cursor.
-// Use 'console.log()' to print to the debug output.
-// For more documentation on playgrounds please refer to
-// https://www.mongodb.com/docs/mongodb-vscode/playgrounds/
+require("dotenv").config();
 
-// Select the database to use.
-use('mongodbVSCodePlaygroundDB');
+// ==========================
+// Imports
+// ==========================
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const twilio = require("twilio");
+const userRoutes = require("./routes/user.js");
 
-// Insert a few documents into the sales collection.
-db.getCollection('sales').insertMany([
-  { 'item': 'abc', 'price': 10, 'quantity': 2, 'date': new Date('2014-03-01T08:00:00Z') },
-  { 'item': 'jkl', 'price': 20, 'quantity': 1, 'date': new Date('2014-03-01T09:00:00Z') },
-  { 'item': 'xyz', 'price': 5, 'quantity': 10, 'date': new Date('2014-03-15T09:00:00Z') },
-  { 'item': 'xyz', 'price': 5, 'quantity': 20, 'date': new Date('2014-04-04T11:21:39.736Z') },
-  { 'item': 'abc', 'price': 10, 'quantity': 10, 'date': new Date('2014-04-04T21:23:13.331Z') },
-  { 'item': 'def', 'price': 7.5, 'quantity': 5, 'date': new Date('2015-06-04T05:08:13Z') },
-  { 'item': 'def', 'price': 7.5, 'quantity': 10, 'date': new Date('2015-09-10T08:43:00Z') },
-  { 'item': 'abc', 'price': 10, 'quantity': 5, 'date': new Date('2016-02-06T20:20:13Z') },
-]);
+// ==========================
+// App Setup
+// ==========================
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Run a find command to view items sold on April 4th, 2014.
-const salesOnApril4th = db.getCollection('sales').find({
-  date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') }
-}).count();
+// ==========================
+// Middleware
+// ==========================
+app.use(cors());
+app.use(bodyParser.json());
 
-// Print a message to the output window.
-console.log(`${salesOnApril4th} sales occurred in 2014.`);
+// ==========================
+// Twilio SMS Code
+// ==========================
+const client = twilio(
+    process.env.TWILIO_SID,
+    process.env.TWILIO_AUTH_TOKEN
+);
 
-// Here we run an aggregation and open a cursor to the results.
-// Use '.toArray()' to exhaust the cursor to return the whole result set.
-// You can use '.hasNext()/.next()' to iterate through the cursor page by page.
-db.getCollection('sales').aggregate([
-  // Find all of the sales that occurred in 2014.
-  { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
-  // Group the total sales for each product.
-  { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
-]);
+const YOUR_PHONE_NUMBER = "+917696784809"; // change to your phone
+const TWILIO_PHONE_NUMBER = "+18585670714"; // Twilio phone
+
+app.post("/send-sms", async (req, res) => {
+    const { name, email, company, message } = req.body;
+
+    const smsText = `
+New Contact Form Submission:
+Name: ${name}
+Email: ${email}
+Company: ${company || "N/A"}
+Message: ${message}
+    `.trim();
+
+    try {
+        await client.messages.create({
+            body: smsText,
+            from: TWILIO_PHONE_NUMBER,
+            to: YOUR_PHONE_NUMBER
+        });
+
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err.message);
+        res.json({ success: false, error: err.message });
+    }
+});
+
+// ==========================
+// MongoDB + User Routes
+// ==========================
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log("✅ MongoDB connected"))
+    .catch(err => console.error("❌ MongoDB connection error:", err));
+
+app.use("/api/users", userRoutes);
+
+// ==========================
+// Start Server
+// ==========================
+app.listen(PORT, () => {
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
+});

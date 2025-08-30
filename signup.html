@@ -52,15 +52,21 @@
             }, 2500);
         }
 
+        // userBtn.addEventListener('click', () => {
+        //     localStorage.setItem('userRole', 'user');
+        //     showToast("✅ Role saved as Patient!", "#2575fc");
+        //     setTimeout(() => {
+        //         window.location.href = "signupform.html";
+        //     }, 1000);
+
+        // });
         userBtn.addEventListener('click', () => {
-            localStorage.setItem('userRole', 'user');
+            localStorage.setItem('userRole', 'patient'); // 👈 changed from 'user' to 'patient'
             showToast("✅ Role saved as Patient!", "#2575fc");
             setTimeout(() => {
                 window.location.href = "signupform.html";
             }, 1000);
-
         });
-
         doctorBtn.addEventListener('click', () => {
             localStorage.setItem('userRole', 'doctor');
             showToast("🩺 Role saved as Doctor!", "#2575fc");
