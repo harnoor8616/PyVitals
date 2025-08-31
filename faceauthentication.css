@@ -15,23 +15,24 @@
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             text-align: center;
-            width: 90%;
+            width: 100vw;
+            height: 80vh;
             max-width: 500px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 5px;
         }
 
         .signup-container h2 {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: whitesmoke;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         .signup-container p {
-            font-size: 1rem;
-            color: rgb(138, 138, 138);
+            font-size: 0.7rem;
+            color: rgb(237, 231, 231);
             margin-bottom: 20px;
         }
 
