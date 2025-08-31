@@ -1,182 +1,159 @@
-    /* General Body and Container Styling */
-    body {
-        background-color: #0041a2;
-        /* Matches the main background color from landingpage.css */
-        font-family: 'Inter', sans-serif;
-        /* Using Inter as it's imported in the context */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        color: whitesmoke;
-        /* Default text color for the page */
-    }
+        body {
+            background-color: #0041a2;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: whitesmoke;
+        }
 
-    .signup-container {
-        background-color: #1e293b;
-        /* Darker background similar to .feature boxes */
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        width: 90%;
-        max-width: 500px;
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    /* Heading Styles */
-    .signup-container h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: whitesmoke;
-        /* Matches .htag and other headings */
-        margin-bottom: 15px;
-    }
-
-    .signup-container p {
-        font-size: 1rem;
-        color: rgb(138, 138, 138);
-        /* Matches .ptag */
-        margin-bottom: 20px;
-    }
-
-    /* Video Feed for Face Authentication */
-    #video-feed {
-        width: 100%;
-        height: 300px;
-        background-color: #000;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        object-fit: cover;
-        border: 2px solid #007bff55;
-        /* Using the accent color for the video border */
-    }
-
-    /* Buttons - Reusing existing styles */
-    .auth-button {
-        /* Adapting .fancy-button for primary action */
-        padding: 14px 32px;
-        font-size: 18px;
-        font-weight: bold;
-        color: #fff;
-        background: linear-gradient(135deg, #0041a2, #3868b1);
-        border: 1px solid whitesmoke;
-        border-radius: 12px;
-        cursor: pointer;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        width: 100%;
-        /* Make button full width */
-    }
-
-    .auth-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.454);
-        transform: skewX(-45deg);
-        transition: all 0.4s ease;
-        z-index: -1;
-    }
-
-    .auth-button:hover::before {
-        left: 100%;
-    }
-
-    .auth-button:hover {
-        transform: scale(1.02);
-        /* Slightly less aggressive scale than original */
-        box-shadow: 0 0 20px 5px #225bb0;
-    }
-
-    .auth-button:active {
-        transform: scale(0.98);
-        /* Slightly less aggressive scale than original */
-        box-shadow: 0 0 10px 2px #225bb0;
-    }
-
-    .secondary-button {
-        /* Adapting .subtle-button for secondary action */
-        padding: 12px 28px;
-        font-size: 16px;
-        font-weight: 500;
-        color: #0041a2;
-        background: linear-gradient(135deg, #e3ecfa, #f6f9ff);
-        border: 1px solid #c3d2ef;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: none;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        width: 100%;
-        /* Make button full width */
-    }
-
-    .secondary-button::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(173, 200, 255, 0.3);
-        transform: skewX(-45deg);
-        transition: all 0.4s ease;
-        z-index: -1;
-    }
-
-    .secondary-button:hover::before {
-        left: 100%;
-    }
-
-    .secondary-button:hover {
-        transform: scale(1.02);
-        /* Slightly less aggressive scale than original */
-        background: linear-gradient(135deg, #dbe9ff, #eef4ff);
-        box-shadow: 0 0 10px 2px rgba(173, 200, 255, 0.4);
-    }
-
-    .secondary-button:active {
-        transform: scale(0.98);
-        /* Slightly less aggressive scale than original */
-        box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
-    }
-
-    /* Status/Message Display */
-    .status-message {
-        margin-top: 15px;
-        font-size: 0.9rem;
-        color: #007bff55;
-        /* Accent color for messages */
-        min-height: 20px;
-        /* Reserve space to prevent layout shifts */
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
         .signup-container {
-            padding: 30px;
-            width: 95%;
+            background-color: #1e293b;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
         .signup-container h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: whitesmoke;
+            margin-bottom: 15px;
         }
 
-        .auth-button,
-        .secondary-button {
-            font-size: 16px;
-            padding: 12px 25px;
+        .signup-container p {
+            font-size: 1rem;
+            color: rgb(138, 138, 138);
+            margin-bottom: 20px;
         }
-    }
+
+        #video-feed {
+            width: 100%;
+            height: 300px;
+            background-color: #000;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 2px solid #007bff55;
+        }
+
+        .auth-button {
+            padding: 14px 32px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #0041a2, #3868b1);
+            border: 1px solid whitesmoke;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .auth-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.454);
+            transform: skewX(-45deg);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .auth-button:hover::before {
+            left: 100%;
+        }
+
+        .auth-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px 5px #225bb0;
+        }
+
+        .auth-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 10px 2px #225bb0;
+        }
+
+        .secondary-button {
+            padding: 12px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #0041a2;
+            background: linear-gradient(135deg, #e3ecfa, #f6f9ff);
+            border: 1px solid #c3d2ef;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .secondary-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(173, 200, 255, 0.3);
+            transform: skewX(-45deg);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .secondary-button:hover::before {
+            left: 100%;
+        }
+
+        .secondary-button:hover {
+            transform: scale(1.02);
+            background: linear-gradient(135deg, #dbe9ff, #eef4ff);
+            box-shadow: 0 0 10px 2px rgba(173, 200, 255, 0.4);
+        }
+
+        .secondary-button:active {
+            transform: scale(0.98);
+            box-shadow: 0 0 6px 1px rgba(173, 200, 255, 0.4);
+        }
+
+        .status-message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #007bff55;
+            min-height: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 30px;
+                width: 95%;
+            }
+
+            .signup-container h2 {
+                font-size: 2rem;
+            }
+
+            .auth-button,
+            .secondary-button {
+                font-size: 16px;
+                padding: 12px 25px;
+            }
+        }

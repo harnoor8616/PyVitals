@@ -6,56 +6,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Authentication Signup</title>
     <link rel="stylesheet" href="faceauthentication.css">
-
+    <link rel="icon" type="image/x-icon" href="Doctor_icon.ico">
 
 </head>
 
 <body>
     <div class="signup-container">
-        <h2>Face Authentication Signup</h2>
-        <p>Please align your face with the camera to complete the signup process.</p>
+        <h2>Enroll Face for Login</h2>
+        <p>Please align your face with the camera. This image will be used for future logins.</p>
 
-        <!-- Video element for camera feed -->
+        <input type="email" id="gmailIdInput" placeholder="Enter your Gmail ID"
+            style="display: block; width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; background-color: #f0f0f0; color: #333;">
+
         <video id="video-feed" autoplay playsinline></video>
-
-        <!-- Status message display -->
+        <canvas id="canvas" style="display: none;"></canvas>
         <div id="status-message" class="status-message"></div>
-
-        <!-- Buttons for actions -->
-        <button id="start-capture-btn" class="auth-button">Start Capture</button>
+        <button id="start-camera-btn" class="auth-button">Start Camera</button>
+        <button id="capture-btn" class="auth-button" style="display: none;">Capture Face</button>
         <button id="retake-btn" class="secondary-button" style="display: none;">Retake</button>
-        <button id="submit-btn" class="auth-button" style="display: none;">Submit</button>
+        <button id="save-face-btn" class="auth-button" style="display: none;">Save Face Data</button>
     </div>
 
     <script>
         const video = document.getElementById('video-feed');
-        const startCaptureBtn = document.getElementById('start-capture-btn');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const gmailIdInput = document.getElementById('gmailIdInput');
+        const startCameraBtn = document.getElementById('start-camera-btn');
+        const captureBtn = document.getElementById('capture-btn');
         const retakeBtn = document.getElementById('retake-btn');
-        const submitBtn = document.getElementById('submit-btn');
+        const saveFaceBtn = document.getElementById('save-face-btn');
         const statusMessage = document.getElementById('status-message');
-        let stream; // To store the media stream
+        let stream;
+        let capturedImageData = null;
 
-        // Function to start camera feed
+        const simulatedDatabase = {
+            users: {
+                "user1@gmail.com": {
+                    username: "User One",
+                    email: "user1@gmail.com",
+                    faceData: null
+                },
+                "test@gmail.com": {
+                    username: "Test User",
+                    email: "test@gmail.com",
+                    faceData: null
+                }
+            },
+            saveFaceData: function (email, faceData) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        if (this.users[email]) {
+                            this.users[email].faceData = faceData;
+                            console.log(`Face data saved for ${email}:`, faceData.substring(0, 50) + '...');
+                            resolve({ success: true, message: "Face data saved successfully!" });
+                        } else {
+                            reject({ success: false, message: "Email not found in simulated database." });
+                        }
+                    }, 1500);
+                });
+            },
+            getFaceData: function (email) {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve(this.users[email] ? this.users[email].faceData : null);
+                    }, 500);
+                });
+            }
+        };
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+
         async function startCamera() {
+            const gmailId = gmailIdInput.value.trim();
+            if (!gmailId) {
+                statusMessage.textContent = 'Please enter your Gmail ID first.';
+                gmailIdInput.focus();
+                return;
+            }
+            if (!isValidEmail(gmailId)) {
+                statusMessage.textContent = 'Please enter a valid email address.';
+                gmailIdInput.focus();
+                return;
+            }
+            try {
+                const response = await fetch("http://localhost:5000/api/users/check-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: gmailId })
+                });
+
+                const data = await response.json();
+
+                if (!data.exists) {
+                    statusMessage.textContent = "Email not found in database. Please register first.";
+                    return;
+                }
+            } catch (err) {
+                console.error("Error checking email:", err);
+                statusMessage.textContent = "⚠️ Could not verify email with server.";
+                return;
+            }
+
+
             try {
                 statusMessage.textContent = 'Accessing camera...';
                 stream = await navigator.mediaDevices.getUserMedia({ video: true });
                 video.srcObject = stream;
                 video.play();
-                statusMessage.textContent = 'Camera active. Align your face.';
-                startCaptureBtn.style.display = 'none';
-                submitBtn.style.display = 'block'; // Show submit after camera starts
-                retakeBtn.style.display = 'none'; // Hide retake initially
+                statusMessage.textContent = 'Camera active. Align your face and click "Capture Face".';
+                gmailIdInput.disabled = true;
+                startCameraBtn.style.display = 'none';
+                captureBtn.style.display = 'block';
+                retakeBtn.style.display = 'none';
+                saveFaceBtn.style.display = 'none';
+                video.style.display = 'block';
+                capturedImageData = null;
             } catch (err) {
                 console.error("Error accessing camera: ", err);
                 statusMessage.textContent = 'Error: Could not access camera. Please grant permissions.';
-                startCaptureBtn.style.display = 'block';
-                submitBtn.style.display = 'none';
+                gmailIdInput.disabled = false;
+                startCameraBtn.style.display = 'block';
+                captureBtn.style.display = 'none';
                 retakeBtn.style.display = 'none';
+                saveFaceBtn.style.display = 'none';
             }
         }
 
-        // Function to stop camera feed
+
         function stopCamera() {
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
@@ -63,41 +144,82 @@
             }
         }
 
-        // Event Listeners
-        startCaptureBtn.addEventListener('click', startCamera);
 
-        submitBtn.addEventListener('click', () => {
-            // In a real application, you would capture a frame from the video
-            // and send it to a backend for face authentication.
-            statusMessage.textContent = 'Capturing image and processing...';
-            stopCamera(); // Stop camera after capture attempt
-            submitBtn.style.display = 'none';
+        function captureImage() {
+            if (!video.srcObject) {
+                statusMessage.textContent = 'Camera not active. Please start camera first.';
+                return;
+            }
+
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            capturedImageData = canvas.toDataURL('image/jpeg', 0.9);
+
+            stopCamera();
+            video.style.display = 'none';
+            statusMessage.textContent = 'Face captured! Review and click "Save Face Data".';
+
+            captureBtn.style.display = 'none';
             retakeBtn.style.display = 'block';
+            saveFaceBtn.style.display = 'block';
+        }
 
-            // Simulate a backend response
-            setTimeout(() => {
-                const success = Math.random() > 0.5; // Simulate success/failure
-                if (success) {
-                    statusMessage.textContent = 'Face authenticated successfully! Redirecting...';
-                    // In a real app, redirect to dashboard or next step
-                    // window.location.href = '/dashboard';
+        async function saveFaceData() {
+            const gmailId = gmailIdInput.value.trim();
+            if (!gmailId || !capturedImageData) {
+                statusMessage.textContent = 'No Gmail ID or captured face data found.';
+                return;
+            }
+
+            statusMessage.textContent = 'Saving face data...';
+            saveFaceBtn.disabled = true;
+
+            try {
+                const response = await fetch("http://localhost:5000/api/users/save-face", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: gmailId, faceData: capturedImageData })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusMessage.textContent = data.message + " 🎉 You can now use face login.";
                 } else {
-                    statusMessage.textContent = 'Authentication failed. Please try again.';
+                    statusMessage.textContent = "❌ Error: " + data.error;
                 }
-            }, 2000);
-        });
+            } catch (error) {
+                console.error("Error saving face data:", error);
+                statusMessage.textContent = '⚠️ Server error while saving face data.';
+            } finally {
+                saveFaceBtn.disabled = false;
+                retakeBtn.style.display = 'block';
+            }
+        }
 
+
+        startCameraBtn.addEventListener('click', startCamera);
+        captureBtn.addEventListener('click', captureImage);
         retakeBtn.addEventListener('click', () => {
-            statusMessage.textContent = ''; // Clear previous message
-            startCamera(); // Restart camera for retake
-        });
-
-        // Initial state: show start button
-        window.onload = () => {
-            startCaptureBtn.style.display = 'block';
-            submitBtn.style.display = 'none';
+            statusMessage.textContent = '';
+            gmailIdInput.disabled = false;
+            startCameraBtn.style.display = 'block';
+            captureBtn.style.display = 'none';
             retakeBtn.style.display = 'none';
-            statusMessage.textContent = 'Click "Start Capture" to begin.';
+            saveFaceBtn.style.display = 'none';
+            video.style.display = 'block';
+            stopCamera();
+        });
+        saveFaceBtn.addEventListener('click', saveFaceData);
+
+        window.onload = () => {
+            startCameraBtn.style.display = 'block';
+            captureBtn.style.display = 'none';
+            retakeBtn.style.display = 'none';
+            saveFaceBtn.style.display = 'none';
+            gmailIdInput.style.display = 'block';
+            statusMessage.textContent = 'Enter your Gmail ID and click "Start Camera".';
         };
     </script>
 </body>
