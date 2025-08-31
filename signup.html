@@ -35,9 +35,7 @@
             </div>
         </div>
     </div>
-    <!-- Toast container -->
     <div id="toast" class="toast"></div>
-
     <script>
         const userBtn = document.getElementById('userBtn');
         const doctorBtn = document.getElementById('doctorBtn');
@@ -51,17 +49,8 @@
                 toast.classList.remove("show");
             }, 2500);
         }
-
-        // userBtn.addEventListener('click', () => {
-        //     localStorage.setItem('userRole', 'user');
-        //     showToast("✅ Role saved as Patient!", "#2575fc");
-        //     setTimeout(() => {
-        //         window.location.href = "signupform.html";
-        //     }, 1000);
-
-        // });
         userBtn.addEventListener('click', () => {
-            localStorage.setItem('userRole', 'patient'); // 👈 changed from 'user' to 'patient'
+            localStorage.setItem('userRole', 'patient');
             showToast("✅ Role saved as Patient!", "#2575fc");
             setTimeout(() => {
                 window.location.href = "signupform.html";
@@ -71,15 +60,10 @@
             localStorage.setItem('userRole', 'doctor');
             showToast("🩺 Role saved as Doctor!", "#2575fc");
             setTimeout(() => {
-                window.location.href = "signupform.html"; // replace with your signup page URL
-            }, 1000); // 1 second delay
+                window.location.href = "signupform.html";
+            }, 1000);
         });
     </script>
-
-
 </body>
-
-
-
 
 </html>

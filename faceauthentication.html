@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Authentication Signup</title>
+    <link rel="stylesheet" href="faceauthentication.css">
+
+
+</head>
+
+<body>
+    <div class="signup-container">
+        <h2>Face Authentication Signup</h2>
+        <p>Please align your face with the camera to complete the signup process.</p>
+
+        <!-- Video element for camera feed -->
+        <video id="video-feed" autoplay playsinline></video>
+
+        <!-- Status message display -->
+        <div id="status-message" class="status-message"></div>
+
+        <!-- Buttons for actions -->
+        <button id="start-capture-btn" class="auth-button">Start Capture</button>
+        <button id="retake-btn" class="secondary-button" style="display: none;">Retake</button>
+        <button id="submit-btn" class="auth-button" style="display: none;">Submit</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('video-feed');
+        const startCaptureBtn = document.getElementById('start-capture-btn');
+        const retakeBtn = document.getElementById('retake-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusMessage = document.getElementById('status-message');
+        let stream; // To store the media stream
+
+        // Function to start camera feed
+        async function startCamera() {
+            try {
+                statusMessage.textContent = 'Accessing camera...';
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                video.play();
+                statusMessage.textContent = 'Camera active. Align your face.';
+                startCaptureBtn.style.display = 'none';
+                submitBtn.style.display = 'block'; // Show submit after camera starts
+                retakeBtn.style.display = 'none'; // Hide retake initially
+            } catch (err) {
+                console.error("Error accessing camera: ", err);
+                statusMessage.textContent = 'Error: Could not access camera. Please grant permissions.';
+                startCaptureBtn.style.display = 'block';
+                submitBtn.style.display = 'none';
+                retakeBtn.style.display = 'none';
+            }
+        }
+
+        // Function to stop camera feed
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+            }
+        }
+
+        // Event Listeners
+        startCaptureBtn.addEventListener('click', startCamera);
+
+        submitBtn.addEventListener('click', () => {
+            // In a real application, you would capture a frame from the video
+            // and send it to a backend for face authentication.
+            statusMessage.textContent = 'Capturing image and processing...';
+            stopCamera(); // Stop camera after capture attempt
+            submitBtn.style.display = 'none';
+            retakeBtn.style.display = 'block';
+
+            // Simulate a backend response
+            setTimeout(() => {
+                const success = Math.random() > 0.5; // Simulate success/failure
+                if (success) {
+                    statusMessage.textContent = 'Face authenticated successfully! Redirecting...';
+                    // In a real app, redirect to dashboard or next step
+                    // window.location.href = '/dashboard';
+                } else {
+                    statusMessage.textContent = 'Authentication failed. Please try again.';
+                }
+            }, 2000);
+        });
+
+        retakeBtn.addEventListener('click', () => {
+            statusMessage.textContent = ''; // Clear previous message
+            startCamera(); // Restart camera for retake
+        });
+
+        // Initial state: show start button
+        window.onload = () => {
+            startCaptureBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
+            retakeBtn.style.display = 'none';
+            statusMessage.textContent = 'Click "Start Capture" to begin.';
+        };
+    </script>
+</body>
+
+</html>
