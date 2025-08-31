@@ -7,17 +7,14 @@
     <title>Face Authentication Signup</title>
     <link rel="stylesheet" href="faceauthentication.css">
     <link rel="icon" type="image/x-icon" href="Doctor_icon.ico">
-
 </head>
 
 <body>
     <div class="signup-container">
         <h2>Enroll Face for Login</h2>
         <p>Please align your face with the camera. This image will be used for future logins.</p>
-
         <input type="email" id="gmailIdInput" placeholder="Enter your Gmail ID"
             style="display: block; width: calc(100% - 20px); padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; background-color: #f0f0f0; color: #333;">
-
         <video id="video-feed" autoplay playsinline></video>
         <canvas id="canvas" style="display: none;"></canvas>
         <div id="status-message" class="status-message"></div>
@@ -26,7 +23,6 @@
         <button id="retake-btn" class="secondary-button" style="display: none;">Retake</button>
         <button id="save-face-btn" class="auth-button" style="display: none;">Save Face Data</button>
     </div>
-
     <script>
         const video = document.getElementById('video-feed');
         const canvas = document.getElementById('canvas');
@@ -39,7 +35,6 @@
         const statusMessage = document.getElementById('status-message');
         let stream;
         let capturedImageData = null;
-
         const simulatedDatabase = {
             users: {
                 "user1@gmail.com": {
@@ -74,12 +69,9 @@
                 });
             }
         };
-
         function isValidEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
-
-
         async function startCamera() {
             const gmailId = gmailIdInput.value.trim();
             if (!gmailId) {
@@ -99,7 +91,10 @@
                     body: JSON.stringify({ email: gmailId })
                 });
 
+                console.log("Fetch response status:", response.status);
+
                 const data = await response.json();
+                console.log("Server returned:", data);
 
                 if (!data.exists) {
                     statusMessage.textContent = "Email not found in database. Please register first.";
@@ -110,8 +105,6 @@
                 statusMessage.textContent = "⚠️ Could not verify email with server.";
                 return;
             }
-
-
             try {
                 statusMessage.textContent = 'Accessing camera...';
                 stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -135,55 +128,43 @@
                 saveFaceBtn.style.display = 'none';
             }
         }
-
-
         function stopCamera() {
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
                 video.srcObject = null;
             }
         }
-
-
         function captureImage() {
             if (!video.srcObject) {
                 statusMessage.textContent = 'Camera not active. Please start camera first.';
                 return;
             }
-
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             capturedImageData = canvas.toDataURL('image/jpeg', 0.9);
-
             stopCamera();
             video.style.display = 'none';
             statusMessage.textContent = 'Face captured! Review and click "Save Face Data".';
-
             captureBtn.style.display = 'none';
             retakeBtn.style.display = 'block';
             saveFaceBtn.style.display = 'block';
         }
-
         async function saveFaceData() {
             const gmailId = gmailIdInput.value.trim();
             if (!gmailId || !capturedImageData) {
                 statusMessage.textContent = 'No Gmail ID or captured face data found.';
                 return;
             }
-
             statusMessage.textContent = 'Saving face data...';
             saveFaceBtn.disabled = true;
-
             try {
                 const response = await fetch("http://localhost:5000/api/users/save-face", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: gmailId, faceData: capturedImageData })
                 });
-
                 const data = await response.json();
-
                 if (response.ok) {
                     statusMessage.textContent = data.message + " 🎉 You can now use face login.";
                 } else {
@@ -197,8 +178,6 @@
                 retakeBtn.style.display = 'block';
             }
         }
-
-
         startCameraBtn.addEventListener('click', startCamera);
         captureBtn.addEventListener('click', captureImage);
         retakeBtn.addEventListener('click', () => {
@@ -212,7 +191,6 @@
             stopCamera();
         });
         saveFaceBtn.addEventListener('click', saveFaceData);
-
         window.onload = () => {
             startCameraBtn.style.display = 'block';
             captureBtn.style.display = 'none';
