@@ -50,6 +50,7 @@ body {
     align-items: center;
     height: 70vh;
     width: 60vw;
+    gap: 0px;
     border-radius: 30px;
     background: #0041a2;
     /* semi-transparent for depth */
@@ -125,4 +126,17 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(-10px);
     pointer-events: auto;
+}
+
+.text-center {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    /* padding-right: calc(var(--bs-gutter-x) * .5); */
+    /* padding-left:0; */
+    padding: 0px;
+    margin-top: var(--bs-gutter-y);
+    flex: 1 0 0px;
+    text-align: center !important;
+    box-sizing: border-box;
 }
