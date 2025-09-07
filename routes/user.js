@@ -101,7 +101,11 @@ const User = require("../models/User");
 // Input validation and sanitization functions
 const sanitizeName = (name) => {
     return name.trim().replace(/\s+/g, ' ').replace(/[^a-zA-Z\s]/g, '');
-};
+};// Make sure this is at the VERY TOP of your main file
+require('dotenv').config();
+
+// Then you can access your variables
+console.log(process.env.MONGO_URI);
 
 const isStrongPassword = (password) => {
     // At least 8 characters, one uppercase, one lowercase, one number
